@@ -39,7 +39,7 @@ import {
       },
       title1: {
         fontSize: 28,
-      
+        fontWeight: 'bold',
         color: "text",
       },
       title2: {
@@ -57,7 +57,6 @@ import {
       button: {
         fontSize: 15,
         color: "text",
-    
       },
       header: {
         fontSize: 12,

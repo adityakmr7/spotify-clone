@@ -1,32 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer ,DefaultTheme } from '@react-navigation/native';
+import { NavigationContainer  } from '@react-navigation/native';
 import {createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Home from './src/screens/Home';
 import Search from './src/screens/Search';
 import Library from './src/screens/Library';
 import Premium from './src/screens/Premium';
-import { Ionicons} from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import {ThemeProvider} from '@shopify/restyle';
+import { theme } from './src/components';
 
 
 const Tabs = createMaterialBottomTabNavigator();
-const MyTheme = {
 
-  dark:false,
-  colors: {
-    primary: 'rgb(28, 28, 30)',
-    background: 'rgb(28, 28, 30)',
-    card: 'rgb(255, 255, 255)',
-    text: 'rgb(255, 255, 255)',
-    border: 'rgb(199, 199, 204)',
-    notification: 'rgb(255, 69, 58)',
-  },
-};
 export default function App() {
   return (
-    <NavigationContainer theme={MyTheme}>
-      <Tabs.Navigator
+    <ThemeProvider theme={theme}>
+    <NavigationContainer>
+        <Tabs.Navigator
+       barStyle={{ backgroundColor: theme.colors.primary }}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color="black", size= 26 }) => {
           let iconName:any;
@@ -61,6 +54,7 @@ export default function App() {
         <Tabs.Screen name="Library" component={Library}/>
         <Tabs.Screen name="Premium" component={Premium}/>
       </Tabs.Navigator>     
-    </NavigationContainer>
+      </NavigationContainer>
+      </ThemeProvider>
   );
 }
