@@ -8,7 +8,6 @@ import Search from './src/screens/Search';
 import Library from './src/screens/Library';
 import Premium from './src/screens/Premium';
 import { Ionicons} from '@expo/vector-icons';
-import { IconProps } from 'react-native-paper/lib/typescript/components/MaterialCommunityIcon';
 
 
 const Tabs = createMaterialBottomTabNavigator();
@@ -29,7 +28,7 @@ export default function App() {
     <NavigationContainer theme={MyTheme}>
       <Tabs.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color="black", size = 26 }) => {
+        tabBarIcon: ({ focused, color="black", size= 26 }) => {
           let iconName:any;
 
           if (route.name === 'Home') {
