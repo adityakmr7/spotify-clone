@@ -1,21 +1,9 @@
 import React from "react";
 import { Image, SafeAreaView, ScrollView, StyleSheet } from "react-native";
-import { Box, Text, theme } from "../components";
-import { Feather as Icon } from '@expo/vector-icons';
+
+import { Box, Text, theme ,Header } from "../components";
 import albumCategory from '../data/albumCategory';
 
-const Header = ({title , iconName}: {title:string, iconName?: string }) => {
-  return (
-    <Box >
-      <Box marginHorizontal="m" height={60} flexDirection="row" alignItems="center" justifyContent="space-between" >
-        <Text variant="title1">{title}</Text>
-        {iconName ?
-          <Icon name={iconName} size={26} color={theme.colors.text} />
-          : null}
-      </Box>
-    </Box>
-  )
-}
 
 const Home = () => {
     return (
@@ -29,18 +17,16 @@ const Home = () => {
               {albumCategory.map((item, i) => {
                 return (
                   <Box key={i}>
-                    <Text marginVertical="m" variant="title1" marginHorizontal="s" color="text">
+                    <Text marginVertical="m" variant="title1" marginHorizontal="m" color="text">
                       {item.title}
                     </Text>
                     <Box>
-                      <ScrollView  horizontal={true}>
+                      <ScrollView showsHorizontalScrollIndicator={false}  horizontal={true}>
                       {item.albums.map((aItem, i) => {
                         return (
                           <Box margin="s">
                             <Image  style={styles.thumbImage} source={{uri: aItem.imageUri}}/>
                             <Box width={120} marginVertical="s">
-
-                          
                               <Text variant="body">{aItem.artistsHeadline}</Text>
                               </Box>
                           </Box>

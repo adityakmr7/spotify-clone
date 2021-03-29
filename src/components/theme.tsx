@@ -40,7 +40,7 @@ import {
       title1: {
         fontSize: 28,
         fontWeight: 'bold',
-        color: "text",
+        color: "border",
       },
       title2: {
         fontSize: 24,
@@ -51,8 +51,8 @@ import {
       body: {
         fontSize: 16,
         lineHeight: 24,
-       
-        color: "text",
+        color: "border",
+        fontWeight: 'bold'
       },
       button: {
         fontSize: 15,
