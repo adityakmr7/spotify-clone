@@ -24,7 +24,7 @@ const Home = () => {
                       <ScrollView showsHorizontalScrollIndicator={false}  horizontal={true}>
                       {item.albums.map((aItem, i) => {
                         return (
-                          <Box margin="s">
+                          <Box key={i} margin="s">
                             <Image  style={styles.thumbImage} source={{uri: aItem.imageUri}}/>
                             <Box width={120} marginVertical="s">
                               <Text variant="body">{aItem.artistsHeadline}</Text>

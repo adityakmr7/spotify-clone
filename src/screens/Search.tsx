@@ -1,13 +1,21 @@
 import React from "react";
-import { SafeAreaView, ScrollView, StyleSheet, Image } from "react-native";
+import {
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Image,
+  FlatList,
+  Dimensions,
+  View,
+} from "react-native";
 import { TextInput } from "react-native-paper";
 import { Feather as Icon } from "@expo/vector-icons";
-
 import { theme, Header, Box, Text } from "../components";
+import { Data } from "../data/searchData";
 
-const Search = () => {
+const SearchHeader = ({}) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <>
       <Box marginVertical="m">
         <Header title="Search" />
       </Box>
@@ -24,56 +32,92 @@ const Search = () => {
           placeholder="Artists, songs, or podcasts"
         />
       </Box>
-      <ScrollView>
-        <Box marginHorizontal="m">
-          <Text marginVertical="l" variant="title1">
-            Your top genres
-          </Text>
-          <Box  flexDirection="row" justifyContent="space-between">
-            <Box flexDirection="row" borderRadius="s" height={90} flex={1}  backgroundColor="notification">
-              <Box flex={1}>
-              <Text color="text" marginVertical="m" marginHorizontal="m" variant="body">Rock</Text>
-              </Box>
-              {/* <Image style={{
-                width: 60, height: 110,
-                position: 'relative',
-                right: -15,
-                top: -5,
-                overflow:'hidden',
-                transform: [
-                  { rotateX: "45deg" },
-                  { rotateZ: "15deg", }
-                ]
-              }} source={{ uri: 'https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg' }} /> */}
-            </Box>
 
-            <Box width={20}/>
-            <Box borderRadius="s" flex={1} backgroundColor="notification">
-              <Text color="text"  marginVertical="m" marginHorizontal="m" variant="body" >Dance/ Electronic</Text>
+      <Box marginHorizontal="m">
+        <Text marginVertical="l" variant="title1">
+          Your top genres
+        </Text>
+        <Box flexDirection="row" justifyContent="space-between">
+          <Box
+            flexDirection="row"
+            borderRadius="s"
+            height={90}
+            flex={1}
+            backgroundColor="notification"
+          >
+            <Box flex={1}>
+              <Text
+                color="text"
+                marginVertical="m"
+                marginHorizontal="m"
+                variant="body"
+              >
+                Rock
+              </Text>
             </Box>
+          </Box>
+
+          <Box width={20} />
+          <Box borderRadius="s" flex={1} backgroundColor="notification">
+            <Text
+              color="text"
+              marginVertical="m"
+              marginHorizontal="m"
+              variant="body"
+            >
+              Dance/ Electronic
+            </Text>
           </Box>
         </Box>
+      </Box>
+      <Text marginVertical="l" variant="title1">
+        Browse all
+      </Text>
+    </>
+  );
+};
 
-        <Box marginHorizontal="m">
-          <Text marginVertical="l" variant="title1">
-            Browse all 
-          </Text>
-          {[1, 2, 3, 4, 5].map((item, i) => (
-            <Box marginVertical="s" flexDirection="row" justifyContent="space-between">
-            <Box borderRadius="s" height={90} flex={1}  backgroundColor="notification">
-              <Text color="text"  marginVertical="m" marginHorizontal="m"  variant="body">Podcasts</Text>
-            </Box>
-            <Box width={20}/>
-            <Box borderRadius="s" flex={1} backgroundColor="notification">
-              <Text color="text" marginVertical="m" marginHorizontal="m" variant="body" >New Releases</Text>
-            </Box>
-          </Box>
-          ))}
-          
-        </Box>  
-
-
-      </ScrollView>
+const _renderItem = ({ item }: { item: any }) => {
+  return (
+    <Box
+      marginHorizontal="s"
+      marginVertical="s"
+      flexDirection="row"
+      justifyContent="space-between"
+    >
+      <Box
+        borderRadius="s"
+        height={90}
+        width={Dimensions.get("screen").width * 0.4}
+        backgroundColor="notification"
+      >
+        <Text
+          color="text"
+          marginVertical="m"
+          marginHorizontal="m"
+          variant="body"
+        >
+          {item.type}
+        </Text>
+      </Box>
+      <Box width={20} />
+      
+    </Box>
+  );
+};
+const Search = () => {
+  
+  return (
+    <SafeAreaView style={styles.container}>
+      <Box marginHorizontal="m">
+        <FlatList
+          ListHeaderComponent={() => <SearchHeader />}
+          numColumns={2}
+          renderItem={_renderItem}
+          data={Data}
+          keyExtractor={(item, i) => item.id}
+        />
+      </Box>
     </SafeAreaView>
   );
 };
