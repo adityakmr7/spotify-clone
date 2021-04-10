@@ -33,7 +33,7 @@ const SearchHeader = ({}) => {
         />
       </Box>
 
-      <Box marginHorizontal="m">
+      <Box marginHorizontal="s">
         <Text marginVertical="l" variant="title1">
           Your top genres
         </Text>
@@ -57,7 +57,7 @@ const SearchHeader = ({}) => {
             </Box>
           </Box>
 
-          <Box width={20} />
+          <Box width={30} />
           <Box borderRadius="s" flex={1} backgroundColor="notification">
             <Text
               color="text"
@@ -78,6 +78,8 @@ const SearchHeader = ({}) => {
 };
 
 const _renderItem = ({ item }: { item: any }) => {
+  const r = () => Math.random() * 256 >> 0;
+  const color = `rgb(${r()}, ${r()}, ${r()})`;
   return (
     <Box
       marginHorizontal="s"
@@ -86,10 +88,11 @@ const _renderItem = ({ item }: { item: any }) => {
       justifyContent="space-between"
     >
       <Box
+        style={{backgroundColor: color}}
         borderRadius="s"
         height={90}
         width={Dimensions.get("screen").width * 0.4}
-        backgroundColor="notification"
+        // backgroundColor="notification"
       >
         <Text
           color="text"
@@ -101,7 +104,6 @@ const _renderItem = ({ item }: { item: any }) => {
         </Text>
       </Box>
       <Box width={20} />
-      
     </Box>
   );
 };
@@ -111,6 +113,7 @@ const Search = () => {
     <SafeAreaView style={styles.container}>
       <Box marginHorizontal="m">
         <FlatList
+          showsVerticalScrollIndicator={false}
           ListHeaderComponent={() => <SearchHeader />}
           numColumns={2}
           renderItem={_renderItem}
