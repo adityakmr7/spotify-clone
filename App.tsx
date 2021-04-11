@@ -9,7 +9,8 @@ import Library from './src/screens/Library';
 import Premium from './src/screens/Premium';
 import { Ionicons } from '@expo/vector-icons';
 import {ThemeProvider} from '@shopify/restyle';
-import { theme } from './src/components';
+import { Box, theme,Text } from './src/components';
+import PlayScreen from './src/screens/PlayScreen';
 
 
 const Tabs = createMaterialBottomTabNavigator();
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
     <NavigationContainer>
+        <PlayScreen />
         <Tabs.Navigator
        barStyle={{ backgroundColor: theme.colors.primary }}
       screenOptions={({ route }) => ({
@@ -49,7 +51,7 @@ export default function App() {
       }}
       
       >
-        <Tabs.Screen name="Home" component={Home} />
+       <Tabs.Screen name="Home" component={Home} />
         <Tabs.Screen name="Search" component={Search} />
         <Tabs.Screen name="Library" component={Library}/>
         <Tabs.Screen name="Premium" component={Premium}/>
