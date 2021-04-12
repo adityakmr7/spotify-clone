@@ -134,6 +134,7 @@ const styles = StyleSheet.create({
 });
 const PlayScreen = () => {
   const [isMinimize, setIsMinimize] = useState(true);
+
   const _onMinimizeClick = () => {
     // decrease height and align to bottom dock
     setIsMinimize(true);
@@ -146,6 +147,7 @@ const PlayScreen = () => {
   const _onDockClick = () => {
     setIsMinimize(false);
   };
+
   return (
     <View style={isMinimize ? styles.containerMini : styles.container}>
       {isMinimize ? (
@@ -155,8 +157,8 @@ const PlayScreen = () => {
               alignItems="center"
               justifyContent="space-between"
               flexDirection="row"
-                          height={DOCK_HEIGHT}
-                          marginRight="s"
+              height={DOCK_HEIGHT}
+              marginRight="s"
             >
               <Image
                 style={{
