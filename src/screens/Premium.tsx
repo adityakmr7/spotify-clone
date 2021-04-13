@@ -65,6 +65,30 @@ const PremiumGroupCard = () => {
   );
 };
 
+const SlideCard = () => {
+  return (
+    <Box
+      flexDirection="row"
+      height={160}
+      borderRadius="xl"
+      width={wWidth - 52}
+      marginHorizontal="m"
+      backgroundColor="notification"
+    >
+      <Box alignItems="center" flex={1} backgroundColor="borderLine">
+        <Text marginVertical="s">Hello world</Text>
+        <Box height={50} />
+        <Text>Fuck</Text>
+      </Box>
+      <Box alignItems="center" flex={1} backgroundColor="text">
+        <Text marginVertical="s">Fuck You</Text>
+        <Box height={50} />
+        <Text>Yup o</Text>
+      </Box>
+    </Box>
+  );
+};
+
 const Premium = () => {
   return (
     <SafeAreaView style={styles.container}>
@@ -76,42 +100,13 @@ const Premium = () => {
             </Text>
           </Box>
           <Box>
-            <Box>
+            <Box marginHorizontal="m" width={wWidth - 32}>
               <ScrollView
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
               >
                 {[1, 2, 3, 4].map((_, i) => {
-                  return (
-                    <Box
-                      key={i}
-                      borderRadius="m"
-                      marginHorizontal="s"
-                      width={wWidth -30}
-                      height={CARD_HEIGHT}
-                      backgroundColor="notification"
-                    >
-                      <Box
-                        marginHorizontal="m"
-                        marginVertical="s"
-                        flexDirection="row"
-                        justifyContent="space-between"
-                        alignItems="flex-start"
-                      >
-                        <Box height={CARD_HEIGHT} flex={1}>
-                          <Text textAlign="center">Free</Text>
-                          <Box height={50} />
-                          <Text textAlign="center">Ad breaks</Text>
-                        </Box>
-                        <Box backgroundColor="main" flex={1}>
-                          <Text textAlign="center">PREMIUM</Text>
-                          <Box height={50} />
-
-                          <Text textAlign="center">Ad-free music</Text>
-                        </Box>
-                      </Box>
-                    </Box>
-                  );
+                  return <SlideCard key={i} />;
                 })}
               </ScrollView>
             </Box>
