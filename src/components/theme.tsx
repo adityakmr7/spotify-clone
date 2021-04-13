@@ -16,7 +16,9 @@ import {
       text: 'rgb(255, 255, 255)',
       border: 'rgb(199, 199, 204)',
       notification: 'rgb(255, 69, 58)',
-      borderLine: '#54b05f'
+      borderLine: '#54b05f',
+      white: '#ffffff',
+      main: '#1DB954'
     },
     spacing: {
       s: 8,
@@ -61,10 +63,14 @@ import {
       },
       header: {
         fontSize: 12,
- 
         lineHeight: 24,
         color: "text",
       },
+      premiumCardTitle: {
+        color: 'white',
+        fontSize: 30,
+        fontWeight:'bold'
+      }
     },
     breakpoints: {},
   };
