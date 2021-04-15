@@ -17,18 +17,23 @@ const Home = () => {
               {albumCategory.map((item, i) => {
                 return (
                   <Box key={i}>
-                    <Text marginVertical="m" variant="title1" marginHorizontal="m" color="text">
+                    <Text marginVertical="m" variant="listTitle" marginHorizontal="m" >
                       {item.title}
                     </Text>
                     <Box>
                       <ScrollView showsHorizontalScrollIndicator={false}  horizontal={true}>
                       {item.albums.map((aItem, i) => {
                         return (
-                          <Box key={i} margin="s">
-                            <Image  style={styles.thumbImage} source={{uri: aItem.imageUri}}/>
+                          <Box elevation={2} key={i} margin="s">
+                            <Box  borderRadius="m">
+
+                           
+                            <Image   style={styles.thumbImage} source={{uri: aItem.imageUri}}/>
                             <Box width={120} marginVertical="s">
-                              <Text variant="body">{aItem.artistsHeadline}</Text>
+                              <Text numberOfLines={1}  variant="listContentTitle">{aItem.artistsHeadline}</Text>
+                                <Text variant="listContentSubTitle">{ aItem.artist}</Text>
                               </Box>
+ </Box>
                           </Box>
                         )
                       })}
@@ -47,11 +52,13 @@ const Home = () => {
 const styles = StyleSheet.create({
     container: {
       backgroundColor: theme.colors.primary,
-      flex: 1
+    flex: 1,
+      
   },
   thumbImage: {
     height: 120,
-    width: 120
+    width: 120,
+    borderRadius: theme.borderRadii.m
   }
   });
   

@@ -19,7 +19,10 @@ import {
       borderLine: '#54b05f',
       white: '#ffffff',
       main: '#1DB954',
-      dark: "#000000"
+      // changing  Here
+      dark: "#000000",
+      bright: "#ffffff",
+      soil: 'rgb(199, 199, 204)',
     },
     spacing: {
       s: 8,
@@ -34,6 +37,23 @@ import {
       xl: 75,
     },
     textVariants: {
+      listTitle: {
+        fontSize: 30,
+        color: 'bright',
+        fontWeight: 'bold',
+        lineHeight: 40
+      },
+      listContentTitle: {
+        fontSize: 15,
+        color: 'bright',
+        fontWeight: 'bold',
+        lineHeight: 20,
+      },
+      listContentSubTitle: {
+        fontSize: 15,
+        color: 'soil',
+        fontWeight: 'bold'
+      },
       hero: {
         fontSize: 80,
         lineHeight: 80,
