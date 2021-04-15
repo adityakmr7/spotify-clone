@@ -76,15 +76,15 @@ const SlideCard = () => {
       backgroundColor="notification"
     >
       <Box alignItems="center" flex={1} backgroundColor="borderLine">
-        <Text marginVertical="s">Hello world</Text>
+        <Text marginVertical="s">FREE</Text>
         <Box height={50} />
-        <Text>Fuck</Text>
+        <Text>Ad breaks</Text>
       </Box>
       <Box alignItems="center" flex={1} backgroundColor="text">
-        <Text marginVertical="s">Fuck You</Text>
+        <Text marginVertical="s">PREMIUM</Text>
         <Box height={50} />
-        <Text>Yup o</Text>
-      </Box>
+        <Text>Ad-free music</Text>
+       </Box>
     </Box>
   );
 };
@@ -134,7 +134,7 @@ const Premium = () => {
             <Box marginVertical="xl" marginHorizontal="m">
               {[1, 2, 3, 4, 5, 6].map((_, i) => {
                 return (
-                  <Box marginBottom="m">
+                  <Box key={i} marginBottom="m">
                     <PremiumGroupCard />
                   </Box>
                 );
