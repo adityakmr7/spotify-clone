@@ -18,7 +18,7 @@ const { width: wWidth, height: wHeight } = Dimensions.get("window");
 const HEIGHT = wHeight;
 const DOCK_HEIGHT = wHeight * 0.08;
 const _ICON_SIZE = 26;
-const _ICON_COLOR = "black";
+const _ICON_COLOR = "#FFFFFF";
 
 const PlayHeader = ({ _onMinimizeClick }: { _onMinimizeClick: () => void }) => {
   return (
@@ -152,9 +152,11 @@ const PlayScreen = () => {
   return (
     <View style={isMinimize ? styles.containerMini : styles.container}>
       {isMinimize ? (
-        <Box backgroundColor="border" width={wWidth} height={DOCK_HEIGHT}>
+        <Box backgroundColor="primary" width={wWidth} height={DOCK_HEIGHT}>
           <TouchableWithoutFeedback onPress={_onDockClick}>
             <Box
+              borderColor="dark"
+              borderBottomWidth={1}
               alignItems="center"
               justifyContent="space-between"
               flexDirection="row"
@@ -172,8 +174,8 @@ const PlayScreen = () => {
                 }}
               />
               <Box>
-                <Text>Ain't No Rest for the Wicked</Text>
-                <Text>cage The Elephant</Text>
+                <Text variant="body">Ain't No Rest for the Wicked</Text>
+                <Text color="text" variant="body">cage The Elephant</Text>
               </Box>
               <Box justifyContent="space-between" flexDirection="row">
                 <Icon name="heart" size={_ICON_SIZE} color={_ICON_COLOR} />

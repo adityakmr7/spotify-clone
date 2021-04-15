@@ -18,7 +18,8 @@ import {
       notification: 'rgb(255, 69, 58)',
       borderLine: '#54b05f',
       white: '#ffffff',
-      main: '#1DB954'
+      main: '#1DB954',
+      dark: "#000000"
     },
     spacing: {
       s: 8,

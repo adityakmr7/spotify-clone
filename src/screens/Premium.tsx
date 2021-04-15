@@ -8,7 +8,7 @@ import {
   TouchableWithoutFeedbackBase,
   View,
 } from "react-native";
-import { Box, Text, theme } from "../components";
+import { Box, SPrimaryButton, Text, theme } from "../components";
 
 const { width: wWidth, height: wHeight } = Dimensions.get("window");
 const CARD_HEIGHT = 160;
@@ -111,7 +111,7 @@ const Premium = () => {
               </ScrollView>
             </Box>
             <Box alignSelf="center" marginVertical="xl">
-              <PremiumButton label="GET PREMIUM" onPress={() => {}} />
+              <SPrimaryButton label="GET PREMIUM" onPress={() => {}} />
               <Text marginVertical="s" textAlign="center" variant="body">
                 Terms and conditions apply
               </Text>

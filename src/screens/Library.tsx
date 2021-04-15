@@ -7,31 +7,10 @@ import {
 } from "react-native";
 
 import { Box, Header, theme, Text } from "../components";
-
-const PlayList = () => {
-  return (
-    <Box>
-      <Text variant="title2"> Playlist</Text>
-    </Box>
-  );
-};
-
-const Artists = () => {
-  return (
-    <Box>
-      <Text variant="title2">Artists</Text>
-    </Box>
-  );
-};
-
-const Albums = () => {
-  return (
-    <Box>
-      <Text variant="title2"> Albums</Text>
-    </Box>
-  );
-};
-
+import Albums from "./LibraryComponents/Albums";
+import Artists from "./LibraryComponents/Artists";
+import PlayList from "./LibraryComponents/PlayList";
+import PodCast from "./LibraryComponents/PodCast";
 const Library = () => {
   const [isMusic, setIsMusic] = useState("music");
   const [isPlaylist, setIsPlaylist] = useState(true);
@@ -134,9 +113,7 @@ const Library = () => {
               </Box>
             </Box>
           ) : (
-            <Box>
-              <Text variant="title2">Podcasts</Text>
-            </Box>
+            <PodCast/>
           )}
         </Box>
       </Box>
