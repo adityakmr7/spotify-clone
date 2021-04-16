@@ -20,6 +20,7 @@ import {
       white: '#ffffff',
       main: '#1DB954',
       // changing  Here
+      darkLight: "#434343",
       dark: "#000000",
       bright: "#ffffff",
       soil: 'rgb(199, 199, 204)',
@@ -53,6 +54,16 @@ import {
         fontSize: 15,
         color: 'soil',
         fontWeight: 'bold'
+      },
+      premiumFreeText: {
+        fontSize: 14,
+        color: 'darkLight',
+        fontWeight: '600'
+      },
+      premiumCardLabel: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        color:'text'
       },
       hero: {
         fontSize: 80,

@@ -9,7 +9,7 @@ import {
   View,
 } from "react-native";
 import Animated from 'react-native-reanimated';
-import { Box, Text } from "../components";
+import { Box, Text, theme } from "../components";
 import { Feather as Icon } from "@expo/vector-icons";
 import { ProgressBar } from "react-native-paper";
 import { AntDesign as IconAnt } from "@expo/vector-icons";
@@ -18,7 +18,7 @@ const { width: wWidth, height: wHeight } = Dimensions.get("window");
 const HEIGHT = wHeight;
 const DOCK_HEIGHT = wHeight * 0.08;
 const _ICON_SIZE = 26;
-const _ICON_COLOR = "#FFFFFF";
+const _ICON_COLOR = theme.colors.darkLight;
 
 const PlayHeader = ({ _onMinimizeClick }: { _onMinimizeClick: () => void }) => {
   return (

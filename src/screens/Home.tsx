@@ -1,3 +1,4 @@
+import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { Image, SafeAreaView, ScrollView, StyleSheet } from "react-native";
 
@@ -8,6 +9,9 @@ import albumCategory from '../data/albumCategory';
 const Home = () => {
     return (
       <SafeAreaView style={ styles.container}>
+        <LinearGradient
+          colors={['#232526', '#000000']}
+        >
         <ScrollView>
             <Box marginVertical="l">
             <Header title="Recently played" iconName="settings"/>
@@ -45,13 +49,14 @@ const Home = () => {
             </ScrollView>
           </Box>
         </ScrollView>
+  </LinearGradient>
       </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-      backgroundColor: theme.colors.primary,
+      // backgroundColor: theme.colors.primary,
     flex: 1,
       
   },

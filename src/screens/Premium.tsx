@@ -1,3 +1,4 @@
+import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import {
   Dimensions,
@@ -35,10 +36,34 @@ const PremiumButton = ({
     </TouchableWithoutFeedback>
   );
 };
-
-const PremiumGroupCard = () => {
+const premiumCardData = [
+  {
+    title: 'Premium Family',
+    price: '15',
+    detail1: 'Choose 1,3,6 or 12 months of Premium * Pay with Paytm or UPI. Top up when you want',
+    detail2: 'Prices vary according to duration of plan.Terms and conditions apply',
+    color: ['#ad5389', '#3c1053']
+  },
+  {
+    title: 'Mini ',
+    price: '7',
+    detail1: 'Choose 1,3,6 or 12 months of Premium * Pay with Paytm or UPI. Top up when you want',
+    detail2: 'Prices vary according to duration of plan.Terms and conditions apply',
+    color: ['#00b4db', '#0083b0']
+  },
+  {
+    title: 'Premium Individual',
+    price: '129',
+    detail1: 'Ad-free music * Download to listen offline',
+    detail2: 'Prices vary according to duration of plan.Terms and conditions apply',
+    color: ['#11998e', '#38ef7d']
+  },
+]
+const PremiumGroupCard = ({ title, price, detail1, detail2, color }) => {
+  
   return (
-    <Box backgroundColor="notification" borderRadius="l">
+    <Box borderRadius="l">
+      <LinearGradient style={{borderRadius: 10}} colors={[color[0], color[1]]}>
       <Box
         marginVertical="xl"
         marginHorizontal="m"
@@ -46,7 +71,7 @@ const PremiumGroupCard = () => {
         alignItems="center"
         justifyContent="space-between"
       >
-        <Text variant="title2">Premium Family</Text>
+          <Text variant="title2">{title}</Text>
         <Text variant="title1">From $15</Text>
       </Box>
       <Box marginBottom="xl" marginHorizontal="xl">
@@ -60,7 +85,8 @@ const PremiumGroupCard = () => {
         <Text variant="body" textAlign="center">
           Prices vary according to duration of plan.Terms and conditions apply
         </Text>
-      </Box>
+        </Box>
+        </LinearGradient>
     </Box>
   );
 };
@@ -75,16 +101,18 @@ const SlideCard = () => {
       marginHorizontal="m"
       backgroundColor="notification"
     >
-      <Box alignItems="center" flex={1} backgroundColor="borderLine">
-        <Text marginVertical="s">FREE</Text>
+      <Box alignItems="center" flex={1} backgroundColor="darkLight">
+        <Text color="card" variant="premiumFreeText" marginVertical="s">FREE</Text>
         <Box height={50} />
-        <Text>Ad breaks</Text>
+        <Text variant="premiumCardLabel">Ad breaks</Text>
       </Box>
-      <Box alignItems="center" flex={1} backgroundColor="text">
-        <Text marginVertical="s">PREMIUM</Text>
+      <LinearGradient style={{flex:1}} colors={['#11998e', '#38ef7d']}>
+      <Box alignItems="center" flex={1} >        
+        <Text color="card" variant="premiumFreeText" marginVertical="s">PREMIUM</Text>
         <Box height={50} />
-        <Text>Ad-free music</Text>
+          <Text variant="premiumCardLabel">Ad-free music</Text>
        </Box>
+          </LinearGradient>
     </Box>
   );
 };
@@ -119,7 +147,7 @@ const Premium = () => {
             <Box marginHorizontal="m" marginVertical="s">
               <Box
                 borderRadius="m"
-                backgroundColor="borderLine"
+                backgroundColor="darkLight"
                 height={60}
                 paddingHorizontal="m"
                 alignItems="center"
@@ -132,10 +160,10 @@ const Premium = () => {
             </Box>
 
             <Box marginVertical="xl" marginHorizontal="m">
-              {[1, 2, 3, 4, 5, 6].map((_, i) => {
+              {premiumCardData.map((item, i) => {
                 return (
                   <Box key={i} marginBottom="m">
-                    <PremiumGroupCard />
+                    <PremiumGroupCard {...item} />
                   </Box>
                 );
               })}
