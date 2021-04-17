@@ -18,8 +18,8 @@ const Tabs = createMaterialBottomTabNavigator();
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar  backgroundColor={theme.colors.darkLight} style="dark"/>
-    <NavigationContainer>
+      {/* <StatusBar  backgroundColor={theme.colors.darkLight} style="dark"/> */}
+    <NavigationContainer >
         <PlayScreen />
         <Tabs.Navigator
        barStyle={{ backgroundColor: theme.colors.primary }}

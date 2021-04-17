@@ -2,16 +2,18 @@ import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { Image, SafeAreaView, ScrollView, StyleSheet } from "react-native";
 
-import { Box, Text, theme ,Header } from "../components";
+import { Box, Text, theme ,Header, SStatusBar } from "../components";
 import albumCategory from '../data/albumCategory';
 
 
 const Home = () => {
     return (
-      <SafeAreaView style={ styles.container}>
+      // <SafeAreaView style={ styles.container}>
+
         <LinearGradient
           colors={['#232526', '#000000']}
         >
+        <SStatusBar backgroundColor="#000000"/>
         <ScrollView>
             <Box marginVertical="l">
             <Header title="Recently played" iconName="settings"/>
@@ -50,7 +52,7 @@ const Home = () => {
           </Box>
         </ScrollView>
   </LinearGradient>
-      </SafeAreaView>
+      // </SafeAreaView>
     )
 }
 
