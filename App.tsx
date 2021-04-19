@@ -16,6 +16,7 @@ import PlayScreen from './src/screens/PlayScreen';
 const Tabs = createMaterialBottomTabNavigator();
 
 export default function App() {
+  
   return (
     <ThemeProvider theme={theme}>
       {/* <StatusBar  backgroundColor={theme.colors.darkLight} style="dark"/> */}

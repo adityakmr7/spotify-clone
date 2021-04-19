@@ -58,7 +58,7 @@ const SearchHeader = ({}) => {
           </Box>
 
           <Box width={30} />
-          <Box borderRadius="s" flex={1} backgroundColor="notification">
+          <Box borderRadius="s" flex={1} backgroundColor="soil">
             <Text
               color="text"
               marginVertical="m"

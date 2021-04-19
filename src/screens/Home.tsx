@@ -9,14 +9,14 @@ import albumCategory from '../data/albumCategory';
 const Home = () => {
     return (
       // <SafeAreaView style={ styles.container}>
-
+    
         <LinearGradient
-          colors={['#232526', '#000000']}
+          colors={['#596164','#000000']}
         >
         <SStatusBar backgroundColor="#000000"/>
         <ScrollView>
             <Box marginVertical="l">
-            <Header title="Recently played" iconName="settings"/>
+            <Header  title="Recently played" iconName="settings"/>
           </Box>
           <Box>
             <ScrollView>

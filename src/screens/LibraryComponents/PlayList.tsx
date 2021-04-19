@@ -14,11 +14,11 @@ const _renderItem = ({ item }) => {
         />
         <Box width={10} />
         <Box>
-          <Text numberOfLines={1} variant="title2">
+          <Text fontWeight="bold" numberOfLines={1} variant="title2">
             {" "}
             {item.artistsHeadline}
           </Text>
-          <Text paddingLeft="s" variant="body">
+          <Text paddingLeft="s" fontWeight="bold" variant="body">
             {" "}
             {item.id} songs
           </Text>
