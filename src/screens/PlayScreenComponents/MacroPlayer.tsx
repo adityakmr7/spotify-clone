@@ -7,10 +7,7 @@ import { Dimensions, Image} from 'react-native';
 import PlayTrack from './PlayTrack';
 import Lyrics from './Lyrics';
 const { width: wWidth, height: wHeight } = Dimensions.get("window");
-const HEIGHT = wHeight;
-const DOCK_HEIGHT = wHeight * 0.08;
-const _ICON_SIZE = 26;
-const _ICON_COLOR = theme.colors.darkLight;
+
 
 interface MacroPlayerProps{
     _onMinimizeClick: () => void;

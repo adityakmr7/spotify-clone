@@ -4,7 +4,12 @@
 
 # Screenshots
 
-Coming soon.....
+<img height="400" width="200" src="./assets/01.png">
+<img height="400" width="200" src="./assets/02.png">
+<img height="400" width="200" src="./assets/03.png">
+<img height="400" width="200" src="./assets/04.png">
+<img height="400" width="200" src="./assets/05.png">
+<img height="400" width="200" src="./assets/06.png">
 
 # Install
 
@@ -19,7 +24,7 @@ Coming soon.....
 - [x] Library Screen
 - [x] Play Screen
 - [ ] Animation in play screen
-- [ ] Premium Screen
+- [x] Premium Screen
 - [ ] API
 - [ ] Add local songs
 

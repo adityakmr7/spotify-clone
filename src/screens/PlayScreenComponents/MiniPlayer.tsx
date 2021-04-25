@@ -5,19 +5,17 @@ import { Dimensions, Image } from 'react-native';
 import {Feather as Icon } from '@expo/vector-icons';
 const { width: wWidth, height: wHeight } = Dimensions.get("window");
 
-const HEIGHT = wHeight;
-const DOCK_HEIGHT = wHeight * 0.08;
 const _ICON_SIZE = 26;
 const _ICON_COLOR = theme.colors.darkLight;
 
 interface MiniPlayerProps {
     _onDockClick: () => void;
-    DOCK_HEIGHT: number;
+    dockHeight: number;
 }
 
-const MiniPlayer = ({_onDockClick, DOCK_HEIGHT}:MiniPlayerProps) => {
+const MiniPlayer = ({_onDockClick, dockHeight}:MiniPlayerProps) => {
     return (
- <Box backgroundColor="primary" width={wWidth} height={DOCK_HEIGHT}>
+ <Box backgroundColor="primary" width={wWidth} height={dockHeight}>
           <TouchableWithoutFeedback onPress={_onDockClick}>
             <Box
               borderColor="dark"
@@ -25,12 +23,12 @@ const MiniPlayer = ({_onDockClick, DOCK_HEIGHT}:MiniPlayerProps) => {
               alignItems="center"
               justifyContent="space-between"
               flexDirection="row"
-              height={DOCK_HEIGHT}
+              height={dockHeight}
               marginRight="s"
             >
               <Image
                 style={{
-                  height: DOCK_HEIGHT,
+                  height: dockHeight,
                   width: 70,
                 }}
                 source={{
