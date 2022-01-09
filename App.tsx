@@ -25,6 +25,7 @@ export default function App() {
         <Tabs.Navigator
        barStyle={{ backgroundColor: theme.colors.primary }}
       screenOptions={({ route }) => ({
+        // @ts-ignore
         tabBarIcon: ({ focused, color="black", size= 26 }) => {
           let iconName:any;
 
@@ -46,6 +47,7 @@ export default function App() {
           return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}
+      // @ts-ignore
       tabBarOptions={{
         activeTintColor: 'tomato',
         inactiveTintColor: 'black',

@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "allAnimation",
-    "slug": "allAnimation",
+    "name": "Spotify Clone",
+    "slug": "spotify-clone",
     "version": "1.0.0",
+
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
