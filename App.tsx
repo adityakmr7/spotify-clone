@@ -28,7 +28,7 @@ export default function App() {
             name="Login"
             component={Login}
           />
-          <Stack.Screen name="Home" component={TabNavigation} />
+          <Stack.Screen options={{headerShown: false}} name="Home" component={TabNavigation} />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>

@@ -1,73 +1,105 @@
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
+import React, { useEffect } from "react";
 import { Image, SafeAreaView, ScrollView, StyleSheet } from "react-native";
 
-import { Box, Text, theme ,Header, SStatusBar } from "../components";
-import albumCategory from '../data/albumCategory';
-
+import { Box, Text, theme, Header, SStatusBar } from "../components";
+import albumCategory from "../data/albumCategory";
+import { getData } from "../utils/storage";
 
 const Home = () => {
-    return (
-      // <SafeAreaView style={ styles.container}>
-    
-        <LinearGradient
-          colors={['#596164','#000000']}
-        >
-        <SStatusBar backgroundColor="#000000"/>
-        <ScrollView>
-            <Box marginVertical="l">
-            <Header  title="Recently played" iconName="settings"/>
-          </Box>
-          <Box>
-            <ScrollView>
-              {albumCategory.map((item, i) => {
-                return (
-                  <Box key={i}>
-                    <Text marginVertical="m" variant="listTitle" marginHorizontal="m" >
-                      {item.title}
-                    </Text>
-                    <Box>
-                      <ScrollView showsHorizontalScrollIndicator={false}  horizontal={true}>
+
+  useEffect(() => {
+    fetchTracks();
+  },[])
+  const fetchTracks = async() => {
+    const userid = await getData("@userid");
+    const token = await getData("@access_token");
+    const user:any = await getData("@userData");
+    console.log("data", JSON.parse(user));
+    fetch(`https://api.spotify.com/v1/albums/`,{
+      method:'GET',
+      headers:{
+        Authorization:`Bearer ${token}`,
+        "Content-Type":"application/json"
+      }
+    }).then((res) =>res.json()).then((response) => {
+      console.log(response);
+    }).catch((err) =>{
+      console.log(err)
+    })
+  }
+  return (
+    // <SafeAreaView style={ styles.container}>
+
+    <LinearGradient colors={["#596164", "#000000"]}>
+      <SStatusBar backgroundColor="#000000" />
+      <ScrollView>
+        <Box marginVertical="l">
+          <Header title="Recently played" iconName="settings" />
+        </Box>
+        <Box>
+          <ScrollView>
+            {albumCategory.map((item, i) => {
+              return (
+                <Box key={i}>
+                  <Text
+                    marginVertical="m"
+                    variant="listTitle"
+                    marginHorizontal="m"
+                  >
+                    {item.title}
+                  </Text>
+                  <Box>
+                    <ScrollView
+                      showsHorizontalScrollIndicator={false}
+                      horizontal={true}
+                    >
                       {item.albums.map((aItem, i) => {
                         return (
                           <Box elevation={2} key={i} margin="s">
-                            <Box  borderRadius="m">
-
-                           
-                            <Image   style={styles.thumbImage} source={{uri: aItem.imageUri}}/>
-                            <Box width={120} marginVertical="s">
-                              <Text numberOfLines={1}  variant="listContentTitle">{aItem.artistsHeadline}</Text>
-                                <Text variant="listContentSubTitle">{ aItem.artist}</Text>
+                            <Box borderRadius="m">
+                              <Image
+                                style={styles.thumbImage}
+                                source={{ uri: aItem.imageUri }}
+                              />
+                              <Box width={120} marginVertical="s">
+                                <Text
+                                  numberOfLines={1}
+                                  variant="listContentTitle"
+                                >
+                                  {aItem.artistsHeadline}
+                                </Text>
+                                <Text variant="listContentSubTitle">
+                                  {aItem.artist}
+                                </Text>
                               </Box>
- </Box>
+                            </Box>
                           </Box>
-                        )
+                        );
                       })}
-                         </ScrollView>
-                    </Box>
+                    </ScrollView>
                   </Box>
-                )
-              })}
-            </ScrollView>
-          </Box>
-        </ScrollView>
-  </LinearGradient>
-      // </SafeAreaView>
-    )
-}
+                </Box>
+              );
+            })}
+          </ScrollView>
+        </Box>
+      </ScrollView>
+    </LinearGradient>
+    // </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-      // backgroundColor: theme.colors.primary,
+  container: {
+    // backgroundColor: theme.colors.primary,
     flex: 1,
-      
   },
   thumbImage: {
     height: 120,
     width: 120,
-    borderRadius: theme.borderRadii.m
-  }
-  });
-  
-export default Home;
+    borderRadius: theme.borderRadii.m,
+  },
+});
 
+export default Home;

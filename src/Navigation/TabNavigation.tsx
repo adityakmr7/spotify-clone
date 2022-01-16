@@ -11,8 +11,7 @@ import PlayScreen from '../screens/PlayScreen';
 const Tabs = createMaterialBottomTabNavigator();
 const TabNavigation = () => {
     return (
-        <>
-    
+        <> 
         <PlayScreen />
         <Tabs.Navigator
         barStyle={{ backgroundColor: theme.colors.primary }}
