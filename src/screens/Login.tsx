@@ -5,9 +5,12 @@ import { ResponseType, useAuthRequest } from "expo-auth-session";
 import { CLIENT_ID, CLIENT_SECRET } from "../config/spotifyCredentials";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { storeData } from "../utils/storage";
+import { useDispatch } from "react-redux";
+import { getCurrentUser } from "../redux/slices/user";
 const { width: wWidth, height: wHeight } = Dimensions.get("window");
 
 const Login = ({ navigation }: any) => {
+  const dispatch = useDispatch();
   const discovery = {
     authorizationEndpoint: "https://accounts.spotify.com/authorize",
     tokenEndpoint: "https://accounts.spotify.com/api/token",
@@ -37,32 +40,11 @@ const Login = ({ navigation }: any) => {
   useEffect(() => {
     if (response?.type === "success") {
       const { access_token } = response.params;
-      storeData("@access_token",access_token);
-      getCurrentUser(access_token);
+      storeData("@access_token", access_token);
+      dispatch(getCurrentUser(access_token));
+      navigation.navigate("Home");
     }
   }, [response]);
-
-  
-
-  const getCurrentUser = (access_token: string) => {
-    fetch("https://api.spotify.com/v1/me", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        const userString =  JSON.stringify(response);
-        storeData("@userData", userString);
-        storeData("@userid", response.id)
-        navigation.navigate("Home")
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
