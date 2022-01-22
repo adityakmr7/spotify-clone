@@ -1,32 +1,40 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useEffect } from "react";
-import { Image, SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import {
+  ActivityIndicator,
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+} from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
-import { Box, Text, theme, Header, SStatusBar } from "../components";
+import {
+  Box,
+  Text,
+  theme,
+  Header,
+  SStatusBar,
+  AppThumbnail,
+} from "../components";
 import albumCategory from "../data/albumCategory";
+import { fetchUserPlaylist, playlistSelector } from "../redux/slices/playlist";
 import { getData } from "../utils/storage";
 
 const Home = () => {
-
+  const dispatch = useDispatch();
+  const { isLoading, data } = useSelector(playlistSelector);
   useEffect(() => {
-    fetchTracks();
-  },[])
-  const fetchTracks = async() => {
-    const userid = await getData("@userid");
-    const token = await getData("@access_token");
-    const user:any = await getData("@userData");
-    console.log("data", JSON.parse(user));
-    fetch(`https://api.spotify.com/v1/albums/`,{
-      method:'GET',
-      headers:{
-        Authorization:`Bearer ${token}`,
-        "Content-Type":"application/json"
-      }
-    }).then((res) =>res.json()).then((response) => {
-      console.log(response);
-    }).catch((err) =>{
-      console.log(err)
-    })
+    dispatch(fetchUserPlaylist());
+  }, []);
+
+  console.log("gettingdata", data);
+  if (isLoading) {
+    return (
+      <Box>
+        <ActivityIndicator />
+      </Box>
+    );
   }
   return (
     // <SafeAreaView style={ styles.container}>
@@ -54,23 +62,23 @@ const Home = () => {
                       showsHorizontalScrollIndicator={false}
                       horizontal={true}
                     >
-                      {item.albums.map((aItem, i) => {
+                      {data?.items?.map((aItem: any, i: number) => {
                         return (
                           <Box elevation={2} key={i} margin="s">
                             <Box borderRadius="m">
                               <Image
                                 style={styles.thumbImage}
-                                source={{ uri: aItem.imageUri }}
+                                source={{ uri: aItem.images[0].url }}
                               />
                               <Box width={120} marginVertical="s">
                                 <Text
                                   numberOfLines={1}
                                   variant="listContentTitle"
                                 >
-                                  {aItem.artistsHeadline}
+                                  {aItem.name}
                                 </Text>
                                 <Text variant="listContentSubTitle">
-                                  {aItem.artist}
+                                  {aItem?.owner?.display_name}
                                 </Text>
                               </Box>
                             </Box>
