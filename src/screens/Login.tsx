@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { View, Text, Dimensions } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { ResponseType, useAuthRequest } from "expo-auth-session";
+// @ts-ignore
 import { CLIENT_ID, CLIENT_SECRET } from "../config/spotifyCredentials";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { storeData } from "../utils/storage";
@@ -41,7 +42,7 @@ const Login = ({ navigation }: any) => {
     if (response?.type === "success") {
       const { access_token } = response.params;
       storeData("@access_token", access_token);
-      dispatch(getCurrentUser(access_token));
+      dispatch(getCurrentUser());
       navigation.navigate("Home");
     }
   }, [response]);

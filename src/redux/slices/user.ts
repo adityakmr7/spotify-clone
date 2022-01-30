@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { AppDispatch, RootState } from "..";
 import { storeData } from "../../utils/storage";
 import axios, { AxiosRequestConfig } from "axios";
+import axiosInstance from "../../services/axiosInterceptor";
 
 interface UserState {
   isLoading: boolean;
@@ -36,19 +37,11 @@ export const { getUser, getUserSuccess } = userSlice.actions;
 
 export default userSlice.reducer;
 
-export const getCurrentUser = (access_token: string) => {
+export const getCurrentUser = () => {
   return async (dispatch: AppDispatch) => {
     dispatch(getUser());
     try {
-      const config: AxiosRequestConfig = {
-        method: "GET",
-        url: "https://api.spotify.com/v1/me",
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-          "Content-Type": "application/json",
-        },
-      };
-      const response = await axios(config);
+      const response = await axiosInstance.get("/v1/me");
       storeData("@userData", JSON.stringify(response.data));
       storeData("@userid", response.data.id);
       getUserSuccess(response.data);

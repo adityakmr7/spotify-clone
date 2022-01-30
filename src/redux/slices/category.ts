@@ -6,43 +6,43 @@ import axios from "axios";
 import { RootState } from "..";
 import axiosInstance from "../../services/axiosInterceptor";
 
-interface PlaylistState {
+interface CategoryState {
   isLoading: boolean;
-  data: any;
+  category: any;
   isError: boolean;
 }
 
-const initialState: PlaylistState = {
+const initialState: CategoryState = {
   isLoading: false,
-  data: [],
+  category: [],
   isError: false,
 };
 
-const plalistSlice = createSlice({
-  name: "plalist",
+const categorySlice = createSlice({
+  name: "category",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchUserPlaylist.pending, (state) => {
+    builder.addCase(fetchCategories.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(fetchUserPlaylist.fulfilled, (state, { payload }) => {
-      state.data = payload;
+    builder.addCase(fetchCategories.fulfilled, (state, { payload }) => {
+      state.category = payload;
       state.isLoading = false;
     });
-    builder.addCase(fetchUserPlaylist.rejected, (state) => {
+    builder.addCase(fetchCategories.rejected, (state) => {
       state.isLoading = false;
       state.isError = true;
     });
   },
 });
 
-export const playlistSelector = (state: RootState) => state.playlist;
-export default plalistSlice.reducer;
+export const categorySelector = (state: RootState) => state.category;
+export default categorySlice.reducer;
 
-export const fetchUserPlaylist = createAsyncThunk("user/playlist", async () => {
+export const fetchCategories = createAsyncThunk("user/category", async () => {
   const userId: any = await getData("@userid");
-  const url = apiEndpoints.getUserPlaylist(userId);
+  const url = apiEndpoints.getCategories();
 
   try {
     const response = await axiosInstance.get(url);
