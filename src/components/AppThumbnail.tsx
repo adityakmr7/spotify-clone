@@ -3,9 +3,9 @@ import { View, Image, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Box, theme, Text } from "./theme";
 
-const AppThumbnail = ({ name, owner, images }: any) => {
+const AppThumbnail = ({ name, owner, images, onPress }: any) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity {...{ onPress }}>
       <Box elevation={2} margin="s">
         <Box borderRadius="m">
           <Image style={styles.thumbImage} source={{ uri: images }} />

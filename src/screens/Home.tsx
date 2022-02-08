@@ -23,7 +23,7 @@ import { categorySelector, fetchCategories } from "../redux/slices/category";
 import { fetchUserPlaylist, playlistSelector } from "../redux/slices/playlist";
 import { getData } from "../utils/storage";
 
-const Home = () => {
+const Home = ({ navigation }: any) => {
   const dispatch = useDispatch();
   const { isLoading, data } = useSelector(playlistSelector);
   const { category } = useSelector(categorySelector);
@@ -34,7 +34,9 @@ const Home = () => {
     dispatch(albumRelease());
   }, []);
 
-  console.log("gettingdata", release);
+  const handleNavigation = (data: any) => {
+    navigation.navigate("Detail");
+  };
   if (isLoading) {
     return (
       <Box>
@@ -71,6 +73,7 @@ const Home = () => {
                           data?.items?.map((aItem: any, i: number) => {
                             return (
                               <AppThumbnail
+                                onPress={() => handleNavigation(aItem)}
                                 images={aItem.images[0].url}
                                 owner={aItem?.owner?.display_name}
                                 name={aItem.name}
@@ -82,6 +85,7 @@ const Home = () => {
                             (item: any, i: number) => {
                               return (
                                 <AppThumbnail
+                                  onPress={() => handleNavigation(item)}
                                   name={item.name}
                                   owner={item.id}
                                   images={item.icons[0].url}
@@ -93,6 +97,7 @@ const Home = () => {
                           release?.albums?.items.map((item: any, i: number) => {
                             return (
                               <AppThumbnail
+                                onPress={() => handleNavigation(item)}
                                 images={item.images[0].url}
                                 owner={item?.owner?.display_name}
                                 name={item.name}
