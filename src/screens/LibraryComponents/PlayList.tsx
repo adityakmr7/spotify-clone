@@ -4,7 +4,7 @@ import { Box, Text } from "../../components";
 import songsData from "../../data/songsData";
 import { Image } from "react-native";
 
-const _renderItem = ({ item }) => {
+const _renderItem = ({ item }: any) => {
   return (
     <Box>
       <Box marginVertical="s" flexDirection="row" alignItems="center">

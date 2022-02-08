@@ -43,7 +43,7 @@ const Login = ({ navigation }: any) => {
       const { access_token } = response.params;
       storeData("@access_token", access_token);
       dispatch(getCurrentUser());
-      navigation.navigate("Home");
+      navigation.navigate("Home", { screen: "Home" });
     }
   }, [response]);
 
